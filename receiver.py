@@ -1,5 +1,5 @@
 from trainer import SparkConfig, Trainer
-from model.model import Model
+from models.model import Model
 import argparse
 
 # parser = argparse.ArgumentParser(description="Receiver - Nhận dữ liệu và huấn luyện mô hình")

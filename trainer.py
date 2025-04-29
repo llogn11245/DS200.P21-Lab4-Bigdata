@@ -4,7 +4,7 @@ from pyspark.mllib.linalg import Vectors
 from pyspark.mllib.regression import LabeledPoint
 import json
 
-from model import Model
+from models.model import Model
 
 class SparkConfig:
     """
