@@ -1,0 +1,22 @@
+from trainer import SparkConfig, Trainer
+from model.model import Model
+import argparse
+
+parser = argparse.ArgumentParser(description="Receiver - Nhận dữ liệu và huấn luyện mô hình")
+parser.add_argument('--model', '-m', required=True, type=str, help='Tên mô hình')
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    model_name = args.model
+
+    # Khởi tạo cấu hình Spark
+    spark_conf = SparkConfig()
+    # Lựa chọn thuật toán mô hình (có thể đặt trong SparkConfig); ở đây dùng logistic regression
+    spark_conf.algorithm = model_name
+
+    # Khởi tạo mô hình và Trainer
+    model = Model(algorithm=spark_conf.algorithm)
+    trainer = Trainer(model, spark_conf)
+
+    # Bắt đầu huấn luyện trên luồng dữ liệu streaming
+    trainer.start_training()
