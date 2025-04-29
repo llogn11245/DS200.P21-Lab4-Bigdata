@@ -19,4 +19,5 @@ if __name__ == "__main__":
     trainer = Trainer(model, spark_conf)
 
     # Bắt đầu huấn luyện trên luồng dữ liệu streaming
+    # Lưu ý: Chạy file này bằng Spark (ví dụ: spark-submit receiver.py)
     trainer.start_training()
